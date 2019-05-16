@@ -2,13 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>IvyElementsManual</title>
+  <title>ManualIvyElements</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+  
+  <flight-info id="info" flight='{ "id": 1, "from": "Here", "to": "There", "date": "now"}' selected="true"></flight-info>
+
+  <script>
+    
+    const elm = document.getElementById('info');
+    elm.addEventListener('selected-change', e => console.debug('event', e));
+  
+  </script>
+
 </body>
 </html>

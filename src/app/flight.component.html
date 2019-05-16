@@ -1,0 +1,24 @@
+<div class="flight" [class.active]="selected">
+  <title-comp></title-comp>
+  <table>
+    <tr>
+      <td class="label">Id</td>
+      <td>{{flight?.id}}</td>
+    </tr>
+    <tr>
+        <td class="label">From</td> 
+        <td>{{flight?.from}}</td>
+    </tr>
+    <tr>
+        <td class="label">To</td>
+        <td>{{flight?.to}}</td>
+    </tr>
+    <tr>
+        <td class="label">Date</td>
+        <td>{{flight?.date}}</td>
+    </tr>
+  </table>
+  <button *ngIf="!selected" (click)="toggle()">Select</button>
+  <button *ngIf="selected" (click)="toggle()">Remove</button>      
+  
+</div>
