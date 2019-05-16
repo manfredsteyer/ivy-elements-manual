@@ -1,6 +1,7 @@
 import { ɵrenderComponent, ɵdetectChanges } from '@angular/core';
 import { FlightComponent } from './flight.component';
 import { Flight } from './flight';
+
 // Manual Custom Elements Wrapper that uses Ivy to render
 // Angular Component
 // The APIs are current private and can change
@@ -8,6 +9,7 @@ import { Flight } from './flight';
 // this task
 export class FlightInfoElement extends HTMLElement {
   private comp: FlightComponent;
+
   get flight(): Flight {
     return this.comp.flight;
   }
@@ -22,9 +24,11 @@ export class FlightInfoElement extends HTMLElement {
     this.comp.selected = selected;
     ɵdetectChanges(this.comp);
   }
+
   static get observedAttributes() {
     return ['selected', 'flight'];
   }
+
   constructor() {
     super();
     this.comp = ɵrenderComponent(FlightComponent, { host: this });
@@ -32,6 +36,7 @@ export class FlightInfoElement extends HTMLElement {
     // translate them into events of the custom element
     this.comp.selectedChange.subscribe(e => this.dispatchEvent(new CustomEvent('selected-change', { detail: e })));
   }
+  
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case 'selected':
